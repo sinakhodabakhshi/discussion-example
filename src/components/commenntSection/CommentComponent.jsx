@@ -12,18 +12,18 @@ export default function CommentComponent({ commentId }) {
     (store) => store.entities[commentId]
   );
   const user = useContext(User);
-  const id = new Date().getTime();
   const inputRef = useRef();
 
   const [inputVisibility, setInputVisibility] = useState(false);
 
   const handleReplyBtn = () => {
-    if (inputRef.current && comment.replies.length !== 0) inputRef.current.focus();
+    if (inputRef.current && comment.replies.length !== 0)
+      inputRef.current.focus();
     else setInputVisibility(!inputVisibility);
   };
 
   const onSubmit = (text) => {
-    setReply({ commentId: comment.id, text, id, user });
+    setReply({ commentId: comment.id, ...text, user });
     if (comment.replies.length === 0) setInputVisibility(false);
   };
 

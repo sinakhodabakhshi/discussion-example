@@ -6,9 +6,8 @@ import UserInput from "./UserInput";
 export default function Header() {
   const user = useContext(User);
   const [, , setComment] = useStore((store) => store.setter);
-  const id = new Date().getTime();
-  const onSubmit = (text) => {
-    setComment({ id, text, user });
+  const onSubmit = (textAndId) => {
+    setComment({ ...textAndId, user });
   };
 
   return (

@@ -8,7 +8,8 @@ const UserInput = React.forwardRef(({ placeHolder, onSubmit }, ref) => {
 
   const handleSubmite = (e) => {
     e.preventDefault();
-    onSubmit(comment);
+    const id = new Date().getTime();
+    onSubmit({comment ,id});
     setComment("");
   };
 
